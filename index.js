@@ -1,15 +1,25 @@
 function queue() {
-    return new Promise(function(resolve, reject) {
-        const nama = ["Jane", "John", "Ed"];
-        const waktu = [500, 1500, 2000];
-        for (let i = 0; i < nama.length; i++) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("John");
+            resolve();
+        }, 1500);
+    })
+    .then(() => {
+        return new Promise((resolve, reject) => {
             setTimeout(() => {
-                console.log(nama[i]);
-                if (i === nama.length - 1) {
-                    resolve("Antrean selesai");
-                }
-            }, waktu[i]);
-        }
+                console.log("Ed");
+                resolve();
+            }, 2000);
+        });
+    })
+    .then(() => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log("Jane");
+                resolve("Antrean selesai");
+            }, 500);
+        });
     });
 }
 
