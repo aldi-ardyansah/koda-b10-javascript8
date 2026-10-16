@@ -1,24 +1,22 @@
 function queue() {
     return new Promise(function(resolve, reject) {
-        setTimeout(() => {
-            console.log("Jane");
-            resolve();
-        }, 500);
+        const nama = ["Jane", "John", "Ed"];
+        const waktu = [500, 1500, 2000];
+        for (let i = 0; i < nama.length; i++) {
+            setTimeout(() => {
+                console.log(nama[i]);
+                if (i === nama.length - 1) {
+                    resolve("Antrean selesai");
+                }
+            }, waktu[i]);
+        }
     });
 }
 
 queue()
-    .then(() => {
-        setTimeout(() => {
-            console.log("John");
-        }, 1000);
-    })
-    .then(() => {
-        setTimeout(() => {
-            console.log("Ed");
-        }, 500);
+    .then((result) => {
+        console.log(result);
     })
     .catch((error) => {
         console.log("Terjadi kesalahan:", error);
     });
-
