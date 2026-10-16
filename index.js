@@ -8,9 +8,7 @@ function queue() {
                     console.log("Ed");
                     resolve("Queue Selesai");
                 }, 500);
-
             }, 1000);
-
         }, 500);
     });
 }
