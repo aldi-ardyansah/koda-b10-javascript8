@@ -1,32 +1,39 @@
-function queue() {
-    return new Promise((resolve, reject) => {
+function queue1() {
+    return new Promise((resolve) => {
         setTimeout(() => {
-            console.log("John");
-            resolve();
+            resolve("John");
         }, 1500);
-    })
-    .then(() => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                console.log("Ed");
-                resolve();
-            }, 2000);
-        });
-    })
-    .then(() => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                console.log("Jane");
-                resolve("Antrean selesai");
-            }, 500);
-        });
     });
 }
 
-queue()
-    .then((result) => {
-        console.log(result);
+function queue2() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Ed");
+        }, 2000);
+    });
+}
+
+function queue3() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Jane");
+        }, 500);
+    });
+}
+
+queue1()
+    .then(function(value) {
+        console.log(value);
+        return queue2();
     })
-    .catch((error) => {
-        console.log("Terjadi kesalahan:", error);
+    .then(function(value) {
+        console.log(value);
+        return queue3();
+    })
+    .then(function(value) {
+        console.log(value);
+    })
+    .catch(function(error) {
+        console.error(error);
     });
