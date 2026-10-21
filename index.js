@@ -1,39 +1,21 @@
-function queue1() {
+function queue(name, delay) {
     return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve("John");
-        }, 1500);
+        setTimeout(() => resolve(name), delay);
     });
 }
 
-function queue2() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve("Ed");
-        }, 2000);
-    });
-}
-
-function queue3() {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve("Jane");
-        }, 500);
-    });
-}
-
-queue1()
-    .then(function(value) {
+queue("John", 1500)
+    .then((value) => {
         console.log(value);
-        return queue2();
+        return queue("Ed", 2000);
     })
-    .then(function(value) {
+    .then((value) => {
         console.log(value);
-        return queue3();
+        return queue("Jane", 500);
     })
-    .then(function(value) {
+    .then((value) => {
         console.log(value);
     })
-    .catch(function(error) {
+    .catch((error) => {
         console.error(error);
     });
