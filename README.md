@@ -1,6 +1,6 @@
 # JavaScript 8
 
-## Membuat antrian dengan built-in constructor object Promise
+## Membuat Antrian dengan Built-in Constructor Object Promise
 
 ### Kode
 ```javascript
